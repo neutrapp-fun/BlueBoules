@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
 
-	const apiURL = 'http://localhost:3000';
+	const apiURL = 'https://captcha.nudejs.dev';
 	const mouse = { x: 0, y: 0 };
 	const condomPos = { x: 0, y: 0, start: null, end: null };
 
