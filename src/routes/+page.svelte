@@ -11,7 +11,6 @@
 
 		tags = data;
 	}
-
 	getTags();
 
 
@@ -52,7 +51,6 @@
         
         getBlogs()
 	}
-
     function removeTag(tag){
         filters = filters.filter(function(value, index, arr){ 
         return value != tag;
@@ -65,30 +63,36 @@
 	let disabled = true;
 
 </script>
-<div class="flex bg-gray-50  text-gray-600">
-    <div class="p-8 md:flex h-full flex-col justify-between hidden">
-        <div>
-            <h2 class="text-3xl">Mes Questions Indiscrètes</h2>
-            <div class="flex flex-col mt-8">
-                <a class="m-2" href="/">Soumettre un article</a>
-                <a class="m-2" href="/">
-                    <div class="flex">
-                        Rejoindre le discord
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-5 h-5 ml-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
-                        </svg>
-                    </div>
-                </a>
-                <a class="m-2" href="/">Contact</a>
-            </div>
-        </div>
 
+<div class="flex bg-gray-50  text-gray-600">
+	<div class="p-8 md:flex flex-col h-full justify-between hidden">
+        <h2 class="text-3xl text-blue-700 font-bold">Mes Questions Indiscrètes</h2>
+
+		<div class="w-full rounded-md mt-12">
+			<div class="items-center justify-center ">
+				<h1 class="text-xl text-[#5A5A5A] mb-6">Ecrivez, pas de Taboo, Safe place</h1>
+			</div>
+			<div class="flex justify-center items-center mb-6">
+				<div class="w-full">
+					<input
+						bind:this={postTags}
+
+						class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6A99C4]"
+						id="inline-full-name"
+						type="text"
+						placeholder="Tags"
+						required
+					/>
+				</div>
+			</div>
+			<div class="flex justify-center mb-6">
+				<div class="w-full">
+					<textarea
+						bind:this={postContent}
 						class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6A99C4]"
 						rows="5"
 						cols="33"
-                placeholder="Je ne sais pas comment faire plaisir à mon partenaire....."
+                		placeholder="Je ne sais pas comment faire plaisir à mon partenaire....."
 						required
 					/>
 				</div>
@@ -102,7 +106,7 @@
 						bind:this={checkbox}
 						on:click={handleClick}
 					/>
-					<span class="text-sm">Je ne suis pas un robot </span>
+					<span class="text-sm"> je ne suis pas un robot </span>
 				</label>
 			</div>
 
@@ -116,28 +120,39 @@
 				</button>
 			</div>
 		</div>
-
-            </div>
-        </a>
-    </div>
-    <div class="grow bg-white p-4 md:p-10">
-        <div class="md:hidden text-3xl m-5">Mes Questions Indiscrètes</div>
-        <div class="flex justify-between flex-col md:flex-row">
-
-            <div>
-                {#each filters as tag}
-                    <div>{tag}</div>
-                {/each}
-            </div>
-            <div class="justify-center sm:justify-start flex w-full ml-4 text-xl">
+		<a href="/game">
+			<div
+				class="mt-8 bg-black w-full h-48 flex flex-col items-center justify-center rounded-none hover:rounded-xl transition-all duration-300"
+			>
+				<p class="text-center text-white font-bold text-xl">Blue Boules <br />The Game</p>
+				<Icon src={Play} solid size="30" class="mt-4 text-white" />
+			</div>
+		</a>
+	</div>
+	<div class="grow bg-white p-4 md:p-10">
+		<div class="flex justify-between mb-4">
+			<div class="justify-center sm:justify-start flex w-full ml-4 text-xl">
                 Blog <span class="text-lg">- Retrouvez ici tout les posts anonymes</span>
             </div>
-            <button class="flex items-center justify-end hover:bg-gray-100 px-2 transition-all duration-300 rounded-xl">
-                Filter
-                <Icon src={ChevronDown} solid size="30" class="ml-2 text-primary"/>
-            </button>
+			<div class="flex items-center space-x-2">
+				{#each filters as a}
+                    <button on:click={removeTag(a)}>
+                        <div class="p-1 rounded-xl border border-gray-100">{a}</div>
+                    </button>
+				{/each} 
+			</div>
+			<select
+				bind:value={tagSelected}
+				on:change={addTag}
+				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2"
+			>
+				<option selected>FILTRE</option>
+				{#each tags as tag}
 
-        </div>
+					<option value={tag.name}>{tag.name}</option>
+				{/each}
+			</select>
+		</div>
 
         {#each $blog as post}
             <Post {post}></Post>
@@ -150,17 +165,28 @@
             <a href="/">#Femme - 15k</a>
             <a href="/">#Femme - 15k</a>
         </div>
-        <div>
-            <a class="m-2" href="/">
-                <div class="flex">
-                    Rejoindre le discord
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-5 h-5 ml-4">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
-                    </svg>
-                </div>
-            </a>
-        </div>
+		<div class="flex flex-col mt-8">
+			<a class="m-2" href="https://discord.gg/yBJsbQFF">
+				<div class="flex">
+					Rejoindre le discord
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+						 stroke="currentColor" class="w-5 h-5 ml-4">
+						<path stroke-linecap="round" stroke-linejoin="round"
+							  d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
+					</svg>
+				</div>
+			</a>
+			<a class="m-2" href="">Contact</a>
+		</div>
     </div>
 </div>
+
+
+<style>
+	button:disabled {
+		background-color: gray;
+	}
+	.buttons:hover button:disabled {
+		@apply translate-x-64;
+	}
+</style>
