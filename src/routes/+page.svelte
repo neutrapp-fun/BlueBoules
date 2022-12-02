@@ -56,13 +56,39 @@
 	}
 </script>
 
+<div class="flex bg-gray-50  text-gray-600">
+    <div class="p-8 md:flex h-full flex-col justify-between hidden">
+        <div>
+            <div>
+
+                <h2 class="text-3xl">Mes Questions Indiscrètes</h2>
+
+            </div>
+            <div class="flex flex-col mt-8">
+                <a class="m-2" href="">Soumettre un article</a>
+                <a class="m-2" href="">
+                    <div class="flex">
+                        Rejoindre le discord
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="w-5 h-5 ml-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
+                        </svg>
+                    </div>
+                </a>
+                <a class="m-2" href="">Contact</a>
+            </div>
+        </div>
+
+        <a href="/game" class="mt-32">
+
 <div class="flex bg-gray-50 h-screen text-gray-600">
 	<div class="p-8 md:flex flex-col h-full justify-between hidden">
 		<img src="logo.png" alt="" />
 
-		<form class="w-full max-w-sm p-8">
+		<form class="w-full bg-white p-16 rounded-md ">
 			<div class="text-center items-center justify-center ">
-				<h1 class="text-xl text-[#5A5A5A] mb-6">Poster, pas de Taboo, Safe place</h1>
+				<h1 class="font-bold text-2xl text-[#5A5A5A] mb-6">Ecrivez, pas de Taboo, Safe place</h1>
 			</div>
 			<div class="flex justify-center items-center mb-6">
 				<div class="w-full">
@@ -83,6 +109,7 @@
 						name="story"
 						rows="5"
 						cols="33"
+                placeholder="Je ne sais pas comment faire plaisir à mon partenaire....."
 						required
 					/>
 				</div>
@@ -143,13 +170,30 @@
 			</select>
 		</div>
 
-		{#each $blog as post}
-			<Post {post} />
-		{/each}
-	</div>
-	<div class="w-52 p-8 hidden md:block">
-		<h2>Tendances Top BBL</h2>
-	</div>
+        {#each $blog as post}
+            <Post {post}></Post>
+        {/each}
+    </div>
+    <div class="w-52 p-8 hidden md:block">
+        <h2 class="text-md mb-4">Tendances Top BBL </h2>
+        <div class="flex flex-col text-sm text-gray-900">
+            <a>#Femme - 15k</a>
+            <a>#FEMME - 15k</a>
+            <a>#FEMME - 15k</a>
+        </div>
+        <div>
+            <a class="m-2" href="">
+                <div class="flex">
+                    Rejoindre le discord
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-5 h-5 ml-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 
 <style>
