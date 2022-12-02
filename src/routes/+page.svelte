@@ -46,6 +46,8 @@
                 .insert({fk_posts: post_id, fk_tags: dataResult[0].id})
             }
         }
+		postContent = ""
+		postTags=""
     }
 
     async function getBlogs(){
@@ -162,7 +164,7 @@
 	<div class="grow bg-white p-4 md:p-10">
 		<div class="flex justify-between mb-4">
 			<div class="justify-center sm:justify-start flex w-full ml-4 text-xl">
-                Blog <span class="text-lg">- Retrouvez ici tout les posts anonymes</span>
+                Blog | Retrouvez ici tout les posts anonymes
             </div>
 			<div class="flex items-center space-x-2">
 				{#each filters as a}
