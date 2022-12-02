@@ -4,9 +4,10 @@
     export let post;
 
     import { Icon, ArrowSmUp } from "svelte-hero-icons";
-    const onUpVotePressed = (post) => {
-        upVote(post.id, post.votes);
-        post.votes+= 1;
+    const onUpVotePressed = async (post) => {
+        console.log("press")
+        post.votes = await upVote(post.id);
+
     }
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -15,7 +16,7 @@
 
 <div class="m-4">
     <div class="flex ">
-        <img class="rounded-full mr-4" src="https://picsum.photos/50/50?{getRandomInt(200)}" alt="">
+        <img class="rounded-full mr-4" src="https://picsum.photos/50/50?%7BgetRandomInt(200)%7D" alt="">
         <div class="text-lg text-gray-700 flex items-center w-full">
             <div class="flex justify-between w-full">
                 <h2>
@@ -23,7 +24,7 @@
                     <span class="text-sm text-gray-600"> - {post.tags}</span>
                 </h2>
                 <div class="flex content-center">
-                    <button on:click={onUpVotePressed(post)}> <Icon src="{ArrowSmUp}"  size="25" class="ml-2 text-primary"/></button>
+                    <button on:click|once={onUpVotePressed(post)}> <Icon src="{ArrowSmUp}"  size="25" class="ml-2 text-primary"/></button>
                     {post.upvotes}
                 </div>
             </div>

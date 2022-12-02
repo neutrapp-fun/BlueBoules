@@ -1,6 +1,6 @@
 <script>
     import {blog} from '../store/blog_store.js'
-    import Blog from '../components/blog.svelte'
+    import Post from '../components/post.svelte'
 
     import {Icon, ChevronDown, Play} from "svelte-hero-icons";
 
@@ -35,8 +35,8 @@
 
         </div>
 
-        {#each $blog as article}
-            <Blog blog={article}></Blog>
+        {#each $blog as post}
+            <Post {post}></Post>
         {/each}
     </div>
     <div class="w-52 p-8 hidden md:block">
