@@ -14,15 +14,38 @@
 	getTags();
 
 
-    let postContent = ""
+    let postContent = "";
     let postTags = ""
 
     async function addPost(){
-        console.log(postContent)
-        // const { data, error } = await supabase
-		// 	.from('posts')
-		// 	.insert({ content: postContent, status: 0, upvotes: 0})
-		// 	.select()
+        const { data, error } = await supabase
+            .from('posts')
+            .insert({ content: postContent, status: 0, upvotes: 0})
+            .select()
+
+        let post_id = data[0].id
+
+        postTags = postTags.split(";")
+        let tagsGetError = false
+        let tagsError = []
+        for(const tag of postTags){
+            const { data, error } = await supabase
+            .from('tags')
+            .select('*')
+            .eq('name', tag.toUpperCase())
+
+            let dataResult = data
+
+            if(data.length == 0){
+                tagsGetError = true
+                tagsError.push(tag)
+            }else{
+
+                const { data, error } = await supabase
+                .from('posts_tags')
+                .insert({fk_posts: post_id, fk_tags: dataResult[0].id})
+            }
+        }
     }
 
     async function getBlogs(){
@@ -62,7 +85,14 @@
 	let captcha = false;
 	let disabled = true;
 
+
+	function handleClick(event) {
+		disabled = !checkbox.checked;
+	}
+
 </script>
+
+
 
 <div class="flex bg-gray-50  text-gray-600">
 	<div class="p-8 md:flex flex-col h-full justify-between hidden">
@@ -75,8 +105,7 @@
 			<div class="flex justify-center items-center mb-6">
 				<div class="w-full">
 					<input
-						bind:this={postTags}
-
+						bind:value={postTags}
 						class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6A99C4]"
 						id="inline-full-name"
 						type="text"
@@ -88,7 +117,7 @@
 			<div class="flex justify-center mb-6">
 				<div class="w-full">
 					<textarea
-						bind:this={postContent}
+						bind:value={postContent}
 						class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6A99C4]"
 						rows="5"
 						cols="33"
@@ -122,10 +151,11 @@
 		</div>
 		<a href="/game">
 			<div
-				class="mt-8 bg-black w-full h-48 flex flex-col items-center justify-center rounded-none hover:rounded-xl transition-all duration-300"
+				class="mt-8 w-full h-48 relative flex flex-col items-center justify-center rounded-none hover:rounded-xl transition-all duration-300"
 			>
-				<p class="text-center text-white font-bold text-xl">Blue Boules <br />The Game</p>
-				<Icon src={Play} solid size="30" class="mt-4 text-white" />
+				<img src="game/img_01.webp" class="absolute w-full h-48 z-10 rounded-none hover:rounded-xl"/>
+				<p class="text-center text-white font-bold text-xl z-50">Blue Boules <br />The Game</p>
+				<Icon src={Play} solid size="30" class="mt-4 text-white z-50" />
 			</div>
 		</a>
 	</div>
