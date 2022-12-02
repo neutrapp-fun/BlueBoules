@@ -6,9 +6,7 @@
     import { Icon, ArrowSmUp } from "svelte-hero-icons";
 
     const onUpVotePressed = async (post) => {
-        console.log("press")
-        post.votes = await upVote(post.id);
-
+        post.upvotes = await upVote(post.id);
     }
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
