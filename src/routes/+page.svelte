@@ -4,7 +4,6 @@
 
     import {Icon, ChevronDown, Play} from "svelte-hero-icons";
 
-
     let filters = []
 
 </script>

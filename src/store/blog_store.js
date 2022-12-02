@@ -33,7 +33,7 @@ export async function upVote(post_id) {
 
 supabase
     .channel('supabase_realtime')
-    .on('postgreschanges', {event: '*', schema: 'public'}, () => {
+    .on('postgres_changes', {event: '*', schema: 'public'}, (_) => {
         fetchPosts();
     })
     .subscribe();
