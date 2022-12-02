@@ -8,7 +8,7 @@
 
 </script>
 <div class="flex bg-gray-50 h-screen text-gray-600">
-    <div class="p-8 md:flex flex-col justify-between hidden">
+    <div class="p-8 md:flex flex-col h-full justify-between hidden">
         <img src="logo.png" alt=""/>
         <a href="/game">
             <div class="bg-black w-full h-48 flex flex-col items-center justify-center rounded-none hover:rounded-xl transition-all duration-300">
@@ -20,7 +20,7 @@
     </div>
     <div class="grow bg-white p-4 md:p-10">
 
-        <div class="flex justify-between">
+        <div class="flex justify-between mb-4">
             <img src="logo.png" alt="" class="h-6 md:hidden flex"/>
             <div>
                 {#each filters as tag}
@@ -28,7 +28,7 @@
                 {/each}
             </div>
             <button class="flex items-center justify-end hover:bg-gray-100 px-2 transition-all duration-300 rounded-xl">
-                Filter
+                Filter 
                 <Icon src={ChevronDown} solid size="30" class="ml-2 text-primary"/>
             </button>
 
