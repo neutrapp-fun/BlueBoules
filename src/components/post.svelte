@@ -46,4 +46,3 @@ let date = timestamp.getHours()+
     </div>
 
 </div>
-<hr>
