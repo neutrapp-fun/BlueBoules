@@ -1,8 +1,6 @@
 <script>
     import {blog} from '../store/blog_store.js'
-    import Blog from '../components/blog.svelte'
-
-    import {Icon, ChevronDown} from "svelte-hero-icons";
+    import Post from '../components/post.svelte'
 </script>
 <div class="flex bg-grey-500 h-full flex-col md:flex-row">
     <div class="flex-auto sm:w-96 w-64 row">
@@ -10,8 +8,8 @@
     </div>
     <div class="flex-auto w-80 ">
 
-        {#each $blog as article}
-            <Blog blog={article}></Blog>
+        {#each $blog as post}
+            <Post {post}></Post>
         {/each}
     </div>
     <div class="flex-auto  lg:w-96 text-center">
