@@ -4,7 +4,7 @@ import supabase from "../lib/supabase";
 
 export const blog = writable([]);
 
-export const fetchPosts = (num = 10, post_date = '2022-12-01 17:26:06') => {
+export const fetchPosts = (num = 5, post_date = '2022-12-01 17:26:06') => {
     supabase.rpc('get_post_with_limit', {
         num,
         post_date
@@ -13,7 +13,6 @@ export const fetchPosts = (num = 10, post_date = '2022-12-01 17:26:06') => {
             console.log('error to fetch posts : ', error)
             return;
         }
-
         blog.set(data);
     });
 }
@@ -28,7 +27,6 @@ export async function upVote(post_id) {
         return;
     }
     return data.new.upvotes
-
 }
 
 supabase
