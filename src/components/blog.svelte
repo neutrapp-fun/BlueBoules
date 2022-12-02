@@ -18,16 +18,18 @@
             .eq('id', id)
         blog.upvotes +=1
     }
+
+    console.log(blog.tags)
 </script>
 
-<div class="m-4">
+<div class="m-4 border-b pb-4 mb-6">
     <div class="flex ">
         <img class="rounded-full mr-4" src="https://picsum.photos/50/50?{getRandomInt(200)}" alt="">
         <div class="text-lg text-gray-700 flex items-center w-full">
             <div class="flex justify-between w-full">
                 <h2>
                     Anonym{getRandomInt(2000)}
-                    <span class="text-sm text-gray-600"> - {blog.tags}</span>
+                    <span class="text-sm text-gray-600 ml-2">{(blog.tags != null ? blog.tags.split(",").join(" | "): "Aucun tag")}</span>
                 </h2>
                 <div class="flex content-center">
                     <button on:click={upvote(blog.id,blog.upvotes)}> <Icon src="{ArrowSmUp}"  size="25" class="ml-2 text-primary"/></button>
@@ -36,10 +38,8 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col align-left">
-        <h2 class="ml-16 text-left">{blog.content}</h2>
-        <h4 class="ml-16 text-left text-xs mt-2">{blog.date}</h4>
-
+    <div class="flex flex-col align-left ml-16">
+        <h2 class="text-left">{blog.content}</h2>
+        <h4 class="text-left text-xs mt-2">{blog.date}</h4>
     </div>
-
 </div>
