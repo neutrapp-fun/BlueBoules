@@ -11,40 +11,47 @@
 
 		tags = data;
 	}
-
-    // async function getBlogs(){
-    //     const { data, error } = await supabase.rpc('get_post_with_limit', {
-    //         num,
-    //         post_date
-    //     }).then(({data, error}) => {
-    //         if (error) {
-    //             console.log('error to fetch posts : ', error)
-    //             return;
-    //         }
-
-    //     blog.set(data);
-    // });
-
-	// 	blog = data;
-    // }
+	getTags();
 
 
+    let postContent = ""
+    let postTags = ""
+
+    async function addPost(){
+        console.log(postContent)
+        // const { data, error } = await supabase
+		// 	.from('posts')
+		// 	.insert({ content: postContent, status: 0, upvotes: 0})
+		// 	.select()
+    }
+
+    async function getBlogs(){
+        let { data, error } = await supabase
+            .rpc('get_posts_by_tags', {
+                tags_1 : (filters[0] == null ? "": filters[0]), 
+                tags_2: (filters[1] == null ? "": filters[1]), 
+                tags_3: (filters[2] == null ? "": filters[2])
+            })
+
+            blog.set(data)
+    };
 
 	let tags = [];
 	let tagSelected = 'FILTRE';
 
-	getTags();
 
 	let filters = [];
 	function addTag() {
         if(tagSelected != "FILTRE")
 		    filters = [...filters, tagSelected].filter((val, index, newlist)=> newlist.indexOf(val) == index)
+        getBlogs()
 	}
 
     function removeTag(tag){
         filters = filters.filter(function(value, index, arr){ 
         return value != tag;
-    })
+        })
+        getBlogs()
     }
 
 	let checkbox;
@@ -60,13 +67,15 @@
 	<div class="p-8 md:flex flex-col h-full justify-between hidden">
         <h2 class="text-3xl text-blue-700 font-bold">Mes Questions Indiscrètes</h2>
 
-		<form class="w-full rounded-md mt-12">
+		<div class="w-full rounded-md mt-12">
 			<div class="items-center justify-center ">
 				<h1 class="text-xl text-[#5A5A5A] mb-6">Ecrivez, pas de Taboo, Safe place</h1>
 			</div>
 			<div class="flex justify-center items-center mb-6">
 				<div class="w-full">
 					<input
+						bind:this={postTags}
+
 						class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6A99C4]"
 						id="inline-full-name"
 						type="text"
@@ -78,9 +87,9 @@
 			<div class="flex justify-center mb-6">
 				<div class="w-full">
 					<textarea
+						bind:this={postContent}
+
 						class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6A99C4]"
-						id="story"
-						name="story"
 						rows="5"
 						cols="33"
                 placeholder="Je ne sais pas comment faire plaisir à mon partenaire....."
@@ -105,12 +114,12 @@
 				<button
 					{disabled}
 					class="shadow transition bg-white hover:bg-[#6A99C4] focus:shadow-outline focus:outline-none text-slate-900 hover:text-white font-bold py-3 px-20 rounded "
-					type="submit"
+                    on:click={addPost}
 				>
 					Envoyer
 				</button>
 			</div>
-		</form>
+		</div>
 
 		<a href="/game">
 			<div
