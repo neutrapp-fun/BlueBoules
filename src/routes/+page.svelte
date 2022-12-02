@@ -13,6 +13,7 @@
 		tags = data;
 	}
 	getTags();
+	// test
 
 	let postContent = '';
 	let postTags = '';

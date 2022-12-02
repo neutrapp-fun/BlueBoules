@@ -12,6 +12,7 @@
 		return Math.floor(Math.random() * max);
 	}
 
+	// test
 	let timestamp = new Date(Date.parse(post.date));
 	let date =
 		timestamp.getHours() +

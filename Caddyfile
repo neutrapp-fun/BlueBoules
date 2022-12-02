@@ -1,0 +1,7 @@
+https:// {
+	tls {
+		resolvers 1.1.1.1
+	}
+
+	reverse_proxy localhost:3000
+}
