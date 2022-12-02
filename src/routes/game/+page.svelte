@@ -9,7 +9,7 @@
 
     let gameData = [
         {
-            text: "Vous vous trouvez dans une soirée étudiante. La soirée bat son plein. Après quelque shot de vodka, vous remarquez une personne et décider de l'aborder. Suite à vos échanges langoureux, la personne fait le premier pas et décide de vous embrassez. Que faites vous ?",
+            text: "Vous vous trouvez dans une soirée étudiante. La soirée bat son plein. Après quelques shots de vodka, vous remarquez une personne et décider de l'aborder. Suite à vos échanges langoureux, la personne fait le premier pas et décide de vous embrassez. Que faites vous ?",
             actions: [
                 {
                     text: "Je la repousse car je n'ai pas de protection orale",
@@ -33,7 +33,7 @@
             img: "/game/img_02.webp"
         },
         {
-            text: "Vous vous éclipsez puis vous embrassez. Vous décidez de prendre la situation en main. Suite a la demande de consentement, vous passez à l'étape suivante. Vos mains glissent doucement et un choix s'offre à vous.",
+            text: "Vous vous éclipsez puis vous embrassez. Vous décidez de prendre la situation en main. Suite à la demande de consentement, vous passez à l'étape suivante. Vos mains glissent doucement et un choix s'offre à vous.",
             actions: [
                 {
                     text: "Je refuse de masturber la personne car je risque d'avoir une IST",
@@ -60,7 +60,7 @@
             text: "Suite à vos échanges érotiques, la personne s'apprête à vous faire du sexe oral",
             actions: [
                 {
-                    text: "J'utilise une protection telle qu'une digue dentaire ou un met un préservatif",
+                    text: "J'utilise une protection telle qu'une digue dentaire ou met un préservatif",
                     state: 1
                 },
                 {

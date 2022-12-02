@@ -135,14 +135,14 @@
 						bind:this={checkbox}
 						on:click={handleClick}
 					/>
-					<span class="text-sm"> je ne suis pas un robot </span>
+					<span class="text-sm"> Je ne suis pas un robot </span>
 				</label>
 			</div>
 
 			<div class="w-full group buttons">
 				<button
 					{disabled}
-					class="shadow transition bg-white hover:bg-[#6A99C4] focus:shadow-outline focus:outline-none text-slate-900 hover:text-white font-bold py-3 px-20 rounded "
+					class="shadow transition bg-white hover:bg-[#6A99C4] focus:shadow-outline focus:outline-none text-slate-900 hover:text-white font-bold py-3 px-20 rounded disabled:bg-gray-400 disabled:text-white"
                     on:click={addPost}
 				>
 					Envoyer
@@ -213,9 +213,6 @@
 
 
 <style>
-	button:disabled {
-		background-color: gray;
-	}
 	.buttons:hover button:disabled {
 		@apply translate-x-64;
 	}
