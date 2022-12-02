@@ -11,6 +11,7 @@
 
 		tags = data;
 	}
+
 	getTags();
 
 
@@ -42,8 +43,13 @@
 
 	let filters = [];
 	function addTag() {
-        if(tagSelected != "FILTRE")
-		    filters = [...filters, tagSelected].filter((val, index, newlist)=> newlist.indexOf(val) == index)
+		if(filters.length == 0){
+			filters = [tagSelected]
+		}else{
+			if(tagSelected != "FILTRE")
+		    	filters = [...filters, tagSelected].filter((val, index, newlist)=> newlist.indexOf(val) == index)
+		}
+        
         getBlogs()
 	}
 
@@ -106,7 +112,7 @@
 						bind:this={checkbox}
 						on:click={handleClick}
 					/>
-					<span class="text-sm"> je ne suis pas un robot </span>
+					<span class="text-sm">Je ne suis pas un robot </span>
 				</label>
 			</div>
 

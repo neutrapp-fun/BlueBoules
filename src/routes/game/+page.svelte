@@ -162,12 +162,18 @@
                 {gameData[gameState].text}
             </div>
             <div class="space-x-4 flex my-8">
-                {#each gameData[gameState].actions as action}
-                    <button on:click={continueGame(action.state)} class="flex-1 bg-white/50 p-4 rounded hover:bg-white/75 transition-all duration-300">
-                        {action.text}
-                    </button>
-                {/each}
+                {#if gameState > 6}
+                    <a href="/game/result" class="flex-1 bg-white/50 p-4 rounded text-center hover:bg-white/75 transition-all duration-300">
+                        Voir Mon score
+                    </a>
+                {:else}
 
+                    {#each gameData[gameState].actions as action}
+                        <button on:click={continueGame(action.state)} class="flex-1 bg-white/50 p-4 rounded hover:bg-white/75 transition-all duration-300">
+                            {action.text}
+                        </button>
+                    {/each}
+                {/if}
             </div>
         </div>
     {/if}
