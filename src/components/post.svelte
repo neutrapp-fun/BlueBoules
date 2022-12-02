@@ -16,7 +16,7 @@
 
 <div class="m-4">
     <div class="flex ">
-        <img class="rounded-full mr-4" src="https://picsum.photos/50/50?{getRandomInt(200)}" alt="">
+        <img class="rounded-full mr-4" src="https://picsum.photos/50/50?%7BgetRandomInt(200)%7D" alt="">
         <div class="text-lg text-gray-700 flex items-center w-full">
             <div class="flex justify-between w-full">
                 <h2>
