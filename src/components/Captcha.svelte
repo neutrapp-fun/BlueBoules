@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	const apiURL = 'http://localhost:3000';
 	const mouse = { x: 0, y: 0 };
@@ -12,6 +13,8 @@
 	let angle = 0;
 	let distance = 0;
 	let loading;
+
+	const dispatch = createEventDispatcher();
 
 	const resetAll = () => {
 		angle = 0;
@@ -79,6 +82,10 @@
 
 		if (status == 'ok') {
 			success = true;
+
+			setTimeout(() => {
+				dispatch('done');
+			});
 		} else {
 			handleMouseResetClick();
 		}
@@ -108,7 +115,7 @@
 	fetchCaptcha();
 </script>
 
-<div class="p-3 w-max border border-gray-10 space-y-4 rounded">
+<div class="p-3 w-max border border-gray-10 space-y-4 rounded bg-white">
 	<div class="bg-blue-400 p-3">
 		<h5 class=" font-bold text-white text-xl">Capoter</h5>
 		<p class="text-xs text-gray-200">Press to pull condom</p>
