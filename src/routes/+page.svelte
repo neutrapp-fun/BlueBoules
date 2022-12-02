@@ -20,9 +20,9 @@
     <div class="p-8 md:flex flex-col h-full justify-between hidden">
         <img src="logo.png" alt=""/>
         
-        <form class="w-full max-w-sm p-8">
+        <form class="w-full bg-white p-16 rounded-md ">
           <div class="text-center items-center justify-center ">
-            <h1 class="text-xl text-[#5A5A5A] mb-6">Poster, pas de Taboo, Safe place</h1>
+            <h1 class="font-bold text-2xl text-[#5A5A5A] mb-6">Ecrivez, pas de Taboo, Safe place</h1>
           </div>
           <div class="flex justify-center items-center mb-6">
             <div class="w-full">
@@ -43,6 +43,7 @@
                 name="story"
                 rows="5"
                 cols="33"
+                placeholder="Je ne sais pas comment faire plaisir à mon partenaire....."
                 required
               />
             </div>
@@ -64,7 +65,7 @@
 
           <div class="w-full group block buttons">
             <button {disabled} 
-              class="absolute shadow transition bg-white hover:bg-[#6A99C4] focus:shadow-outline focus:outline-none text-slate-900 hover:text-white font-bold py-3 px-20 rounded "
+              class="absolute shadow transition bg-gray-100 hover:bg-[#6A99C4] focus:shadow-outline focus:outline-none text-slate-900 hover:text-white font-bold py-3 px-20 rounded "
               type="submit"
             >
               Envoyer
